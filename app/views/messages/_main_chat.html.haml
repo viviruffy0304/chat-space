@@ -1,0 +1,27 @@
+.chat-main
+  .chat-main__group-info
+    .groups
+      .group__box
+        test
+      .group__box-2
+        member :
+    .group__box-3
+      = link_to "Edit", "#",class: "editlink"
+  .chat-main__message-list
+    .messages
+      .messages__in
+        before
+      .messages__out
+        now
+    .message
+      after
+  .chat-main__message-form
+    .form
+      .input-box
+        %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+        .input__box__image
+          %label{class: "input-box__image"}
+            = icon('fas', 'image')
+            %input{type: "file", class: "image"}
+      .form-button
+        %input{type: "submit", class: "submit-btn",value: "Send",data_disable_with:"Send"}
