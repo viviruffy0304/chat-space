@@ -2,14 +2,14 @@
   .side-bar__box
     .side-bar__box-2
       .side-bar__box-3
-        masa
+        = current_user.name
       
       %ul.side-bar__box__new-drops
         %li.side-bar__box__new-drop
           = link_to "" do
             %i.fa.fa-edit
         %li.side-bar__box__new-drop-2
-          = link_to "" do
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
   .side-bar__groups
 
