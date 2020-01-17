@@ -3,20 +3,19 @@
     .side-bar__box-2
       .side-bar__box-3
         = current_user.name
-      
       %ul.side-bar__box__new-drops
         %li.side-bar__box__new-drop
-          = link_to "" do
+          = link_to new_group_path do
             %i.fa.fa-edit
         %li.side-bar__box__new-drop-2
           = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
   .side-bar__groups
-
-    .side-bar__group
-      = link_to "#",class: "group" do
-        .side-bar__group-3
-          ありがとう
-        .side-bar__group-4
-          ごめん
+    - current_user.groups.each do |group|
+      .side-bar__group
+        = link_to "messages#index",class: "group" do
+          .side-bar__group-3
+            = group.name
+          .side-bar__group-4
+            メッセージはまだありません。
     
