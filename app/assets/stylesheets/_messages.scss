@@ -112,7 +112,7 @@
   position: absolute;
   right: 60px;
   line-height: 40px;
-  .editlink{
+  a{
     color: #38aef0;
     text-decoration:none;
   }
@@ -138,7 +138,7 @@
       
     }
   }
-  .message{
+  .message__box{
     margin-bottom: 46px;
     color: #434a54;
     font-size: 14px;
@@ -154,25 +154,28 @@
     .input-box {
       position: relative;
       width: 100%;
-
-      &__text {
-        height: 50px;
-        width: 100%;
-        padding: 0 40px 0 10px;
-        color: #434a54;
-        border-style: none;
+      .new_message{
+        display: flex;
       }
-      .input__box__image {
-        font-size: 1.3rem;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        input[type="file"]{
-          display: none;
-        }
 
-      }
+        .input-box__text {
+          height: 50px;
+          width: 950px;
+          padding: 0 40px 0 10px;
+          color: #434a54;
+          border-style: none;
+          }
+          .input__box__image {
+            font-size: 1.3rem;
+            position: absolute;
+            top: 10px;
+            right: 120px;
+            cursor: pointer;
+            input[type="file"]{
+              display: none;
+            }
+
+          }
     }
     input[type="submit"]{
       width: 100px;
