@@ -54,7 +54,6 @@ $('#new_message').on('submit', function(e){
    return: false,
  })
   .done(function(data){
-    console.log(data)
     var html = buildHTML(data);
     $('.chat-main__message-list').append(html);  
     $('form')[0].reset();
