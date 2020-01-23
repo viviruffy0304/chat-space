@@ -1,8 +1,9 @@
 $(function(){ 
   function buildHTML(message){
+  
    if ( message.image ) {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="message" data-message-id="${message.id}">
          <div class="upper-message">
            <div class="upper-message__user-name">
              ${message.user_name}
@@ -21,7 +22,7 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="message" data-message-id="${message.id}">
          <div class="upper-message">
            <div class="upper-message__user-name">
              ${message.user_name}
@@ -38,7 +39,7 @@ $(function(){
        </div>`
      return html;
    };
- }
+  }
 $('#new_message').on('submit', function(e){
  e.preventDefault();
  var formData = new FormData(this);
@@ -54,7 +55,7 @@ $('#new_message').on('submit', function(e){
  })
   .done(function(data){
     var html = buildHTML(data);
-    $('.chat-main__message-list').append(html);      
+    $('.chat-main__message-list').append(html);  
     $('form')[0].reset();
     $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
     $('.submit-btn').prop('disabled', false);
@@ -63,4 +64,29 @@ $('#new_message').on('submit', function(e){
     alert("メッセージ送信に失敗しました");
 });
 })
+var reloadMessages = function() {
+   var last_message_id = $(".message:last").data("message-id");
+  $.ajax({
+    url: "api/messages",
+    type: 'GET',
+    dataType: 'json',
+    data: {id: last_message_id}
+  })
+  .done(function(messages){
+    if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(LGTM,message) {
+        insertHTML += buildHTML(message);
+      })
+      $('.chat-main__message-list').append(insertHTML);
+      $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight}, 'fast');
+    }
+  })
+  .fail(function() {
+    alert("自動更新に失敗しました");
+  });
+}
+if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+  setInterval(reloadMessages, 7000);
+}
 });
