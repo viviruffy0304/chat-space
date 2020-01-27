@@ -146,6 +146,7 @@
   
 }
 .chat-main__message-form {
+  height: 90px;
   padding: 20px 40px;
   background-color: #ddd;
   .form {
@@ -155,27 +156,33 @@
       position: relative;
       width: 100%;
       .new_message{
-        display: flex;
+        width: 100%;
       }
-
-        .input-box__text {
-          height: 50px;
-          width: 950px;
-          padding: 0 40px 0 10px;
-          color: #434a54;
-          border-style: none;
+        .new_messages{
+          display: flex;
+          &-box{
+            position: relative;
+            width: 100%;
           }
-          .input__box__image {
-            font-size: 1.3rem;
-            position: absolute;
-            top: 10px;
-            right: 120px;
-            cursor: pointer;
-            input[type="file"]{
-              display: none;
+        }
+
+          .input-box__text {
+            height: 50px;
+            padding: 0 40px 0 10px;
+            color: #434a54;
+            border-style: none;
+            width: 100%;
             }
+            .input__box__image {
+              font-size: 1.3rem;
+              position: absolute;
+              top: 10px;
+              cursor: pointer;
+              input[type="file"]{
+                display: none;
+              }
 
-          }
+            }
     }
     input[type="submit"]{
       width: 100px;
